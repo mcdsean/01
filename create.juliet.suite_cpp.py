@@ -200,7 +200,10 @@ def create_random_juliet_c_true(juliet_suite_path_t, language):
                     # ***** selectively disable functions in main.cpp ******
                     # ditch the file extension and ending letters
                     reference_to_look_for_in_main_cpp = os.path.splitext(fe)[0]
-                    if not reference_to_look_for_in_main_cpp.endswith('_bad'):
+                    if '_good' in reference_to_look_for_in_main_cpp or '_bad' in reference_to_look_for_in_main_cpp:
+                        reference_to_look_for_in_main_cpp = reference_to_look_for_in_main_cpp.rsplit('_', 1)[0]
+
+                    else:
                         reference_to_look_for_in_main_cpp = reference_to_look_for_in_main_cpp.rstrip('abcdef')
 
                     print("reference_to_look_for_in_main_cpp", reference_to_look_for_in_main_cpp)
